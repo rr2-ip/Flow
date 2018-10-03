@@ -413,8 +413,8 @@ int main(void)
 		/* calculate focal_length in pixel */
 		const float focal_length_px = (global_data.param[PARAM_FOCAL_LENGTH_MM]) / (4.0f * 6.0f) * 1000.0f; //original focal lenght: 12mm pixelsize: 6um, binning 4 enabled
 
-		/* get sonar data */
-		distance_valid = sonar_read(&sonar_distance_filtered, &sonar_distance_raw);
+		/* get sonar data - edited by Andrew to stop optical flow data being fused due to noise on sonar pins, which causes EKF instablity*/
+		distance_valid = 0.0f; //sonar_read(&sonar_distance_filtered, &sonar_distance_raw);
 
 		/* reset to zero for invalid distances */
 		if (!distance_valid) {
