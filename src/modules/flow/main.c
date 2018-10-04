@@ -571,13 +571,13 @@ int main(void)
 				// send flow
 				mavlink_msg_optical_flow_send(MAVLINK_COMM_0, get_boot_time_us(), global_data.param[PARAM_SENSOR_ID],
 						pixel_flow_x_sum * 10.0f, pixel_flow_y_sum * 10.0f,
-						flow_comp_m_x, flow_comp_m_y, qual, ground_distance);
+						flow_comp_m_x, flow_comp_m_y, qual,0);// ground_distance);
 
 				mavlink_msg_optical_flow_rad_send(MAVLINK_COMM_0, get_boot_time_us(), global_data.param[PARAM_SENSOR_ID],
 						integration_timespan, accumulated_flow_x, accumulated_flow_y,
 						accumulated_gyro_x, accumulated_gyro_y, accumulated_gyro_z,
 						gyro_temp, accumulated_quality/accumulated_framecount,
-						time_since_last_sonar_update,ground_distance);
+						time_since_last_sonar_update,0);//ground_distance);
 
 				/* send approximate local position estimate without heading */
 				if (FLOAT_AS_BOOL(global_data.param[PARAM_SYSTEM_SEND_LPOS]))
