@@ -18,7 +18,6 @@ typedef struct __mavlink_optical_flow_rad_t
  uint8_t quality; ///< Optical flow quality / confidence. 0: no valid flow, 255: maximum quality
 } mavlink_optical_flow_rad_t;
 
-distance = 0; //Added by Andrew to stop EKF instabilty
 #define MAVLINK_MSG_ID_OPTICAL_FLOW_RAD_LEN 44
 #define MAVLINK_MSG_ID_106_LEN 44
 
@@ -37,8 +36,8 @@ distance = 0; //Added by Andrew to stop EKF instabilty
          { "integrated_xgyro", NULL, MAVLINK_TYPE_FLOAT, 0, 20, offsetof(mavlink_optical_flow_rad_t, integrated_xgyro) }, \
          { "integrated_ygyro", NULL, MAVLINK_TYPE_FLOAT, 0, 24, offsetof(mavlink_optical_flow_rad_t, integrated_ygyro) }, \
          { "integrated_zgyro", NULL, MAVLINK_TYPE_FLOAT, 0, 28, offsetof(mavlink_optical_flow_rad_t, integrated_zgyro) }, \
-         { "time_delta_distance_us", NULL, MAVLINK_TYPE_UINT32_T, 0, 32, offsetof(mavlink_optical_flow_rad_t, time_delta_distance_us) }, \
-         { "distance", NULL, MAVLINK_TYPE_FLOAT, 0, 36, offsetof(mavlink_optical_flow_rad_t, distance) }, \
+         { "time_delta_\_us", NULL, MAVLINK_TYPE_UINT32_T, 0, 32, offsetof(mavlink_optical_flow_rad_t, time_delta_distance_us) }, \
+         { "distance", NULL, MAVLINK_TYPE_FLOAT, 0, 36, offsetof(mavlink_optical_flow_rad_t, 0) }, \
          { "temperature", NULL, MAVLINK_TYPE_INT16_T, 0, 40, offsetof(mavlink_optical_flow_rad_t, temperature) }, \
          { "sensor_id", NULL, MAVLINK_TYPE_UINT8_T, 0, 42, offsetof(mavlink_optical_flow_rad_t, sensor_id) }, \
          { "quality", NULL, MAVLINK_TYPE_UINT8_T, 0, 43, offsetof(mavlink_optical_flow_rad_t, quality) }, \
@@ -79,7 +78,7 @@ static inline uint16_t mavlink_msg_optical_flow_rad_pack(uint8_t system_id, uint
 	_mav_put_float(buf, 24, integrated_ygyro);
 	_mav_put_float(buf, 28, integrated_zgyro);
 	_mav_put_uint32_t(buf, 32, time_delta_distance_us);
-	_mav_put_float(buf, 36, distance);
+	_mav_put_float(buf, 36, 0);
 	_mav_put_int16_t(buf, 40, temperature);
 	_mav_put_uint8_t(buf, 42, sensor_id);
 	_mav_put_uint8_t(buf, 43, quality);
@@ -95,7 +94,7 @@ static inline uint16_t mavlink_msg_optical_flow_rad_pack(uint8_t system_id, uint
 	packet.integrated_ygyro = integrated_ygyro;
 	packet.integrated_zgyro = integrated_zgyro;
 	packet.time_delta_distance_us = time_delta_distance_us;
-	packet.distance = distance;
+	packet.distance = 0;
 	packet.temperature = temperature;
 	packet.sensor_id = sensor_id;
 	packet.quality = quality;
@@ -145,7 +144,7 @@ static inline uint16_t mavlink_msg_optical_flow_rad_pack_chan(uint8_t system_id,
 	_mav_put_float(buf, 24, integrated_ygyro);
 	_mav_put_float(buf, 28, integrated_zgyro);
 	_mav_put_uint32_t(buf, 32, time_delta_distance_us);
-	_mav_put_float(buf, 36, distance);
+	_mav_put_float(buf, 36, 0);
 	_mav_put_int16_t(buf, 40, temperature);
 	_mav_put_uint8_t(buf, 42, sensor_id);
 	_mav_put_uint8_t(buf, 43, quality);
@@ -161,7 +160,7 @@ static inline uint16_t mavlink_msg_optical_flow_rad_pack_chan(uint8_t system_id,
 	packet.integrated_ygyro = integrated_ygyro;
 	packet.integrated_zgyro = integrated_zgyro;
 	packet.time_delta_distance_us = time_delta_distance_us;
-	packet.distance = distance;
+	packet.distance = 0;
 	packet.temperature = temperature;
 	packet.sensor_id = sensor_id;
 	packet.quality = quality;
@@ -235,7 +234,7 @@ static inline void mavlink_msg_optical_flow_rad_send(mavlink_channel_t chan, uin
 	_mav_put_float(buf, 24, integrated_ygyro);
 	_mav_put_float(buf, 28, integrated_zgyro);
 	_mav_put_uint32_t(buf, 32, time_delta_distance_us);
-	_mav_put_float(buf, 36, distance);
+	_mav_put_float(buf, 36, 0);
 	_mav_put_int16_t(buf, 40, temperature);
 	_mav_put_uint8_t(buf, 42, sensor_id);
 	_mav_put_uint8_t(buf, 43, quality);
@@ -255,7 +254,7 @@ static inline void mavlink_msg_optical_flow_rad_send(mavlink_channel_t chan, uin
 	packet.integrated_ygyro = integrated_ygyro;
 	packet.integrated_zgyro = integrated_zgyro;
 	packet.time_delta_distance_us = time_delta_distance_us;
-	packet.distance = distance;
+	packet.distance = 0;
 	packet.temperature = temperature;
 	packet.sensor_id = sensor_id;
 	packet.quality = quality;
@@ -288,7 +287,7 @@ static inline void mavlink_msg_optical_flow_rad_send_buf(mavlink_message_t *msgb
 	_mav_put_float(buf, 24, integrated_ygyro);
 	_mav_put_float(buf, 28, integrated_zgyro);
 	_mav_put_uint32_t(buf, 32, time_delta_distance_us);
-	_mav_put_float(buf, 36, distance);
+	_mav_put_float(buf, 36, 0);
 	_mav_put_int16_t(buf, 40, temperature);
 	_mav_put_uint8_t(buf, 42, sensor_id);
 	_mav_put_uint8_t(buf, 43, quality);
@@ -308,7 +307,7 @@ static inline void mavlink_msg_optical_flow_rad_send_buf(mavlink_message_t *msgb
 	packet->integrated_ygyro = integrated_ygyro;
 	packet->integrated_zgyro = integrated_zgyro;
 	packet->time_delta_distance_us = time_delta_distance_us;
-	packet->distance = distance;
+	packet->distance = 0;
 	packet->temperature = temperature;
 	packet->sensor_id = sensor_id;
 	packet->quality = quality;
@@ -443,8 +442,10 @@ static inline uint32_t mavlink_msg_optical_flow_rad_get_time_delta_distance_us(c
  * @return Distance to the center of the flow field in meters. Positive value (including zero): distance known. Negative value: Unknown distance.
  */
 static inline float mavlink_msg_optical_flow_rad_get_distance(const mavlink_message_t* msg)
-{
-	return _MAV_RETURN_float(msg,  36);
+{	
+	float distance = 0;
+	return distance;
+	//return _MAV_RETURN_float(msg,  36);
 }
 
 /**
