@@ -18,6 +18,7 @@ typedef struct __mavlink_optical_flow_rad_t
  uint8_t quality; ///< Optical flow quality / confidence. 0: no valid flow, 255: maximum quality
 } mavlink_optical_flow_rad_t;
 
+distance = 0; //Added by Andrew to stop EKF instabilty
 #define MAVLINK_MSG_ID_OPTICAL_FLOW_RAD_LEN 44
 #define MAVLINK_MSG_ID_106_LEN 44
 
